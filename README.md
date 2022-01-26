@@ -12,4 +12,4 @@ will be noted.
 Once the robot can be controlled by simple numeric commands (through a variable block), the end result we will try to achieve is to interface the simulation with ROS through  
 [the ROS toolbox](https://uk.mathworks.com/help/ros/ug/get-started-with-ros.html)
 
-![](./images/Robocup-conroller.png "Expected Result")
+![](./images/Robocup-controller.png "Expected Result")
