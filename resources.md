@@ -8,3 +8,6 @@
 
 ### Object Detection Robot:
 [Simulating Mobile Robots with MATLAB and Simulink](https://youtu.be/7p2McZCKvus)
+
+### 2D RoboCup Simulation:
+[Matlab based simulation of 2D soccer game](https://www.baucomrobotics.com/projects/2017/1/9/robocup-strategy-simulation)
