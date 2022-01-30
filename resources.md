@@ -6,3 +6,5 @@
 ### Swarm Robotics Modelling:
 [Creating a simulation of a swarm of robots](https://uk.mathworks.com/videos/matlab-and-simulink-robotics-arena-programming-robot-swarms-1539080970349.html)
 
+### Object Detection Robot:
+[Simulating Mobile Robots with MATLAB and Simulink](https://youtu.be/7p2McZCKvus)
