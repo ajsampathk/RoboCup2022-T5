@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<launch>
+
+<!-- Worlds and previous versions of NAO with joints and dcm controllers were referenced at 'https://github.com/ros-naoqi/nao_virtual'  -->
+<!-- Load the field and the ball -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find nao_gazebo_plugin)/worlds/naoFoot.world"/>
+    <arg name="paused" value="true"/>
+  </include>
+
+<!-- Spawn the robots -->
+  <node name="spawn_nao11" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -0.5 -y 1 -z 0.0345 -model nao11  "/>
+  <node name="spawn_nao12" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -2 -y 0 -z 0.0345 -model nao12  "/>
+  <node name="spawn_nao13" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -2 -y 2 -z 0.0345 -model nao13  "/>
+  <node name="spawn_nao14" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -4 -y 1 -z 0.0345 -model nao14  "/>
+
+
+</launch>
