@@ -18,6 +18,7 @@
         <visual name='visual'>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
+
             <mesh>
               <uri>/home/aj/Downloads/nao_robot.stl</uri>
               <scale>0.0037 0.0037 0.0037</scale>
@@ -27,7 +28,7 @@
             <lighting>1</lighting>
             <script>
               <uri>file://media/materials/scripts/gazebo.material</uri>
-              <name>Gazebo/Grey</name>
+              <name>Gazebo/SkyBlue</name>
             </script>
           </material>
           <transparency>0</transparency>
