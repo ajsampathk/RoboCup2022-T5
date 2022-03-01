@@ -1746,7 +1746,10 @@
           <surface>
             <bounce/>
             <friction>
-              <ode/>
+              <ode>
+                <mu>0.61</mu>
+                <mu2>0.52</mu2>
+              </ode>
             </friction>
             <contact>
               <ode/>
