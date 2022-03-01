@@ -13,14 +13,14 @@ HEIGHT_CONSTANT = 0.345
 PUBLISH_RATE  = 10
 STEP_CONSTANT  = 0.05
 current_state = ModelState()
-current_state.model_name = "nao_v40"
+current_state.model_name = "nao11"
 state_pub = None
-rate = rospy.Rate(PUBLISH_RATE)
+rate= None
 
 
 def nao_state(msg):
     global current_state
-    nao_idx = list(msg.name).index("nao_v40")
+    nao_idx = list(msg.name).index("nao11")
     current_state.pose = msg.pose[nao_idx]
     current_state.twist = msg.twist[nao_idx]
 
@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     rospy.init_node('Simple_controller')
     rospy.Subscriber('/gazebo/model_states',ModelStates,nao_state)
-
+    rate = rospy.Rate(PUBLISH_RATE)
     state_pub = rospy.Publisher('/gazebo/set_model_state',ModelState,queue_size=10)
 
     while not rospy.is_shutdown():

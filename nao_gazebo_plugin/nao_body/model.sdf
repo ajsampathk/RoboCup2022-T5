@@ -20,7 +20,7 @@
           <geometry>
 
             <mesh>
-              <uri>/home/aj/Downloads/nao_robot.stl</uri>
+              <uri>/usr/share/nao_body_mesh/nao_robot.stl</uri>
               <scale>0.0037 0.0037 0.0037</scale>
             </mesh>
           </geometry>
