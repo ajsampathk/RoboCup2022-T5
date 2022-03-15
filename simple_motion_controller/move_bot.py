@@ -20,7 +20,7 @@ rate= None
 
 def nao_state(msg):
     global current_state
-    nao_idx = list(msg.name).index("nao11")
+    nao_idx = list(msg.name).index("nao11::nao_body")
     current_state.pose = msg.pose[nao_idx]
     current_state.twist = msg.twist[nao_idx]
 
@@ -29,8 +29,8 @@ def move_x(l):
     updated_state = ModelState()
     while not abs(current_state.pose.position.x-l) <0.05:
         updated_state=current_state
-        updated_state.pose.position.x+=(STEP_CONSTANT*cmp(l-current_state.pose.position.x,0))
-        rospy.loginfo(updated_state.pose.position.x)
+        updated_state.twist.linear.x =(STEP_CONSTANT*cmp(l-current_state.pose.position.x,0))
+        rospy.loginfo(updated_state.twist.linear.x)
         state_pub.publish(updated_state)
         rate.sleep()
     
