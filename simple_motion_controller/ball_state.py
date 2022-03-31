@@ -39,7 +39,10 @@ class ball_state():
 
         print(min(diffBlue))
         print(min(diffYellow))
-        if ((min(diffBlue) > 0.4) and (min(diffYellow) > 0.4)):
+
+        # is no bot is within 0.3 of the ball, that means the ball is free
+        # otherwise check which bot is closest to the ball and assign to it
+        if ((min(diffBlue) > 0.3) and (min(diffYellow) > 0.3)):
             self.pubBlue.publish(ball_status[0])
             self.pubYellow.publish(ball_status[0])
         elif (min(diffBlue) < min(diffYellow)):
