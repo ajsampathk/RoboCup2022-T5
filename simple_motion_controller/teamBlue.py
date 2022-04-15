@@ -124,7 +124,7 @@ if __name__ == '__main__':
 
     rospy.init_node('Team_Blue')
     rospy.Subscriber('chatter/blue', String, ball_state)
-    
+    rate = rospy.Rate(10)
     attacker = move_api.robot("blueA")
     defenderL = move_api.robot("blueDL")
     defenderR = move_api.robot("blueDR")
@@ -162,4 +162,5 @@ if __name__ == '__main__':
                 kickToGoal(ball, defenderR)
         elif ball_occupier == "blueG":
             ball.kick(attacker.current_state.pose.position.x, attacker.current_state.pose.position.y, 1)
+        rate.sleep()
         

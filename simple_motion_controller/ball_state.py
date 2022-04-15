@@ -37,8 +37,8 @@ class ball_state():
             diffBlue.append((hypot(teamBlue[i].current_state.pose.position.x - ball_x, teamBlue[i].current_state.pose.position.y - ball_y)))
             diffYellow.append((hypot(teamYellow[i].current_state.pose.position.x - ball_x, teamYellow[i].current_state.pose.position.y - ball_y)))
 
-        print(min(diffBlue))
-        print(min(diffYellow))
+        # print(min(diffBlue))
+        # print(min(diffYellow))
 
         # is no bot is within 0.3 of the ball, that means the ball is free
         # otherwise check which bot is closest to the ball and assign to it
@@ -46,11 +46,11 @@ class ball_state():
             self.pubBlue.publish(ball_status[0])
             self.pubYellow.publish(ball_status[0])
         elif (min(diffBlue) < min(diffYellow)):
-            print(teamBlue[diffBlue.index(min(diffBlue))].current_state.model_name)
+            # print(teamBlue[diffBlue.index(min(diffBlue))].current_state.model_name)
             self.pubBlue.publish(teamBlue[diffBlue.index(min(diffBlue))].current_state.model_name)
             self.pubYellow.publish(ball_status[1])
         else:
-            print(teamYellow[diffYellow.index(min(diffYellow))].current_state.model_name)
+            # print(teamYellow[diffYellow.index(min(diffYellow))].current_state.model_name)
             self.pubYellow.publish(teamYellow[diffYellow.index(min(diffYellow))].current_state.model_name)
             self.pubBlue.publish(ball_status[1])
 
