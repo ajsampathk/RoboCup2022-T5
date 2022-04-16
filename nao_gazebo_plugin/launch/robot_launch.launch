@@ -9,10 +9,10 @@
   </include>
 
 <!-- Spawn the robots -->
-  <node name="spawn_nao11" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -0.5 -y 1 -z 0.0345 -Y 1.52144 -model yellowA  "/>
-  <node name="spawn_nao12" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -2 -y 0 -z 0.0345 -Y 1.52144 -model yellowDR  "/>
-  <node name="spawn_nao13" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -2 -y 2 -z 0.0345 -Y 1.52144 -model yellowDL  "/>
-  <node name="spawn_nao14" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -4 -y 1 -z 0.0345 -Y 1.52144 -model yellowG  "/>
+  <node name="spawn_nao11" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -0.5 -y 1 -z 0.0345 -Y 0 -model yellowA  "/>
+  <node name="spawn_nao12" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -2 -y 0 -z 0.0345 -Y 0 -model yellowDR  "/>
+  <node name="spawn_nao13" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -2 -y 2 -z 0.0345 -Y 0 -model yellowDL  "/>
+  <node name="spawn_nao14" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model.sdf -x -4 -y 1 -z 0.0345 -Y 0 -model yellowG  "/>
   <node name="spawn_nao15" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model-blue.sdf -x 0.5 -y 1 -z 0.0345 -Y 3.130335 -model blueA  "/>
   <node name="spawn_nao16" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model-blue.sdf -x 2 -y 0 -z 0.0345 -Y 3.130335 -model blueDL  "/>
   <node name="spawn_nao17" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model-blue.sdf -x 2 -y 2 -z 0.0345 -Y 3.130335 -model blueDR  "/>

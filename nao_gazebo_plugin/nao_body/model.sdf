@@ -86,7 +86,9 @@
           </surface>
         </collision>
       </link>
-
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose frame=''>-0 -1e-06 0 0 -0 1.52144</pose>
     </model>
     <static>0</static>
     <allow_auto_disable>1</allow_auto_disable>

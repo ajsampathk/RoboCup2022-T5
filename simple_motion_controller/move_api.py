@@ -79,7 +79,6 @@ class robot():
             # rospy.loginfo(updated_state)
             self.state_pub.publish(updated_state)
 
-
 if __name__ == '__main__':
 
     rospy.init_node('Simple_controller')
