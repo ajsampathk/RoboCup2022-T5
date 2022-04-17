@@ -91,28 +91,28 @@ def kickToGoal(ball, bot):
         x = cos(y_shoot)
         y = sin(y_shoot)
         if bot_position <= max_before_attempt:
-            ball.kick(x, y, 2)
+            ball.kick(x, y, 3)
         else:
             # otherwise dribble the ball to the goal
-            ball.kick(x, y, 1)
+            ball.kick(x, y, 2)
         # if left post is visible, then shoot the ball between the left post and yaw2
     elif (right_post_angle > yaw2 and left_post_angle < yaw2 and left_post_angle > yaw1):
         y_random = random.uniform(min(left_post_angle, yaw2), max(left_post_angle, yaw2))
         x = cos(y_random)
         y = sin(y_random)
         if bot_position <= max_before_attempt:
-            ball.kick(x,y, 2)
+            ball.kick(x,y, 3)
         else: 
-            ball.kick(x,y, 1)
+            ball.kick(x,y, 2)
         # if the right post is visible, then shoot the ball betweem the right post and yaw1
     elif (left_post_angle < yaw1 and right_post_angle > yaw1 and right_post_angle < yaw2):
         y_random = random.uniform(min(right_post_angle, yaw1),max(right_post_angle, yaw1))
         x = cos(y_random)
         y = sin(y_random)
         if bot_position <= max_before_attempt:
-            ball.kick(x,y, 2)
+            ball.kick(x,y, 3)
         else: 
-            ball.kick(x,y, 1)
+            ball.kick(x,y, 2)
         # if the robot is facing left and goal is not visible then, dribble to the right
     elif left_post_angle < yaw1 and right_post_angle < yaw2: # facing left, goal not in range
         x =  cos(yaw1)
@@ -128,7 +128,7 @@ def kickToGoal(ball, bot):
 if __name__ == '__main__':
 
     rospy.init_node('Team_Blue')
-    rospy.Subscriber('chatter/blue', String, ball_state)
+    rospy.Subscriber('ball_state/blue', String, ball_state)
     rate = rospy.Rate(10)
     attacker = move_api.robot("blueA")
     defenderL = move_api.robot("blueDL")
@@ -136,7 +136,7 @@ if __name__ == '__main__':
     goalkeeper = move_api.robot("blueG")
     ball = move_api.ball()
 
-    rospy.wait_for_message('chatter/blue', String)
+    rospy.wait_for_message('ball_state/blue', String)
 
     while not rospy.is_shutdown():
         ball_position_x = ball.ball_current_state.pose.position.x

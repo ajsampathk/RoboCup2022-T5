@@ -16,8 +16,8 @@ class ball_state():
         self.opponent = 'O'
         self.free = 'free'
         rospy.Subscriber('/gazebo/model_states',ModelStates,self.ball_position)
-        self.pubBlue = rospy.Publisher('chatter/blue', String, queue_size=1)
-        self.pubYellow = rospy.Publisher('chatter/yellow', String, queue_size=1)
+        self.pubBlue = rospy.Publisher('ball_state/blue', String, queue_size=1)
+        self.pubYellow = rospy.Publisher('ball_state/yellow', String, queue_size=1)
 
     def ball_position(self, msg):
         global ball_current_state

@@ -19,4 +19,6 @@
   <node name="spawn_nao18" pkg="gazebo_ros" type="spawn_model" args="-sdf -file $(find nao_gazebo_plugin)/nao_body/model-blue.sdf -x 4 -y 1 -z 0.0345 -Y 3.130335 -model blueG  "/>
 
   <node name="ball_states" pkg="simple_motion_controller" type="ball_state.py"/>
+  <node name="Team_blue" pkg="simple_motion_controller" type="teamBlue.py"/>
+  <node name="Team_Yellow" pkg="simple_motion_controller" type="teamYellow.py"/>
 </launch>

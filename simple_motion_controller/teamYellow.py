@@ -53,7 +53,8 @@ def kickToGoal(ball, bot):
     orientation_list = [bot.current_state.pose.orientation.x, bot.current_state.pose.orientation.y, bot.current_state.pose.orientation.z, bot.current_state.pose.orientation.w]
     (roll, pitch, yaw) = euler_from_quaternion(orientation_list)
     bot_position = bot.current_state.pose.position.x
-
+    dribble_force=2
+    kick_force = 4
     # viewing angle of the bot, which is 60 degrees
     yaw1 = yaw + 0.523599
     yaw2 = yaw - 0.523599
@@ -90,10 +91,10 @@ def kickToGoal(ball, bot):
         x = cos(y_shoot)
         y = sin(y_shoot)
         if bot_position >= max_before_attempt:
-            ball.kick(x, y, 2)
+            ball.kick(x, y, random.uniform(1,kick_force))
         else:
             # otherwise dribble the ball to the goal
-            ball.kick(x, y, 1)
+            ball.kick(x, y, random.uniform(1,dribble_force))
         # if left post is visible, then shoot the ball between the left post and yaw2
     elif (left_post_angle < yaw1 and left_post_angle > yaw2 and right_post_angle < yaw2):
         # print("left post visible")
@@ -101,9 +102,9 @@ def kickToGoal(ball, bot):
         x = cos(y_random)
         y = sin(y_random)
         if bot_position >= max_before_attempt:
-            ball.kick(x,y, 2)
+            ball.kick(x,y, random.uniform(1,kick_force))
         else: 
-            ball.kick(x,y, 1)
+            ball.kick(x,y, random.uniform(1,dribble_force))
         # if the right post is visible, then shoot the ball betweem the right post and yaw1
     elif (left_post_angle > yaw1 and right_post_angle < yaw1 and right_post_angle > yaw2):
         # print("right post visible")
@@ -111,9 +112,9 @@ def kickToGoal(ball, bot):
         x = cos(y_random)
         y = sin(y_random)
         if bot_position >= max_before_attempt:
-            ball.kick(x,y, 2)
+            ball.kick(x,y, random.uniform(1,kick_force))
         else: 
-            ball.kick(x,y, 1)
+            ball.kick(x,y, random.uniform(1,dribble_force))
         # if the robot is facing left and goal is not visible then, dribble to the right
     elif left_post_angle < yaw1 and right_post_angle < yaw2: # facing left, goal not in range
         # print("left facing")
@@ -135,26 +136,28 @@ def kickToGoal(ball, bot):
 if __name__ == '__main__':
 
     rospy.init_node('Team_Yellow')
-    rospy.Subscriber('chatter/yellow', String, ball_state)
+    rospy.Subscriber('ball_state/yellow', String, ball_state)
     rate = rospy.Rate(10)
     attacker = move_api.robot("yellowA")
     defenderL = move_api.robot("yellowDL")
     defenderR = move_api.robot("yellowDR")
     goalkeeper = move_api.robot("yellowG")
     ball = move_api.ball()
-
-    rospy.wait_for_message('chatter/yellow', String)
+    
+    offset=0.3
+    rospy.wait_for_message('ball_state/yellow', String)
 
     while not rospy.is_shutdown():
         ball_position_x = ball.ball_current_state.pose.position.x
+        speed=random.uniform(0.5,1)
         if((ball_occupier == "free" or ball_occupier == "with_oppo") and ball_position_x > -0.5):
-            attacker.followBall(ball)
-            defenderL.followBall(ball)
-            defenderR.move(-2,0)
+            attacker.followBall(ball,speed,offset,offset)
+            defenderL.followBall(ball,speed,offset,offset)
+            defenderR.move(-2,0,speed)
         elif((ball_occupier == "free" or ball_occupier == "with_oppo") and ball_position_x < -0.5):
-            defenderL.followBall(ball)
-            defenderR.followBall(ball)
-            attacker.move(-0.5,1)
+            defenderL.followBall(ball,speed,offset,offset)
+            defenderR.followBall(ball,speed,offset,offset)
+            attacker.move(-0.5,1,speed)
             goalkeeper.moveKeeper(ball)
 
         if ball_occupier == "yellowA":
